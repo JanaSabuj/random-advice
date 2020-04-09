@@ -1,6 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
 
-const Box = () => {
+const Box = ({ advice }) => {
   return (
     <div className="row">
       <div className="col s0 m3"> </div>
@@ -10,11 +11,7 @@ const Box = () => {
             <span className="card-title">
               <i className="material-icons">fingerprint</i>
             </span>
-            <p style={{ fontFamily: "Cairo", fontSize: "20px" }}>
-              I am a very simple card. I am good at containing small bits of
-              information. I am convenient because I require little markup to
-              use effectively.
-            </p>
+            <p style={{ fontFamily: "Cairo", fontSize: "20px" }}>{advice}</p>
           </div>
           <div className="card-action">
             <button
@@ -33,4 +30,10 @@ const Box = () => {
   );
 };
 
-export default Box;
+const mapStateToProps = state => {
+  return {
+    advice: state.adviceRoot.advice
+  };
+};
+
+export default connect(mapStateToProps)(Box);
