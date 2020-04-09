@@ -3,7 +3,7 @@ export const getAdvice = advice => {
     // async
     dispatch({
       type: "GET_ADVICE",
-      advice: advice
+      payload: advice
     });
   };
 };
