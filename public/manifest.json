@@ -1,0 +1,21 @@
+{
+  "name": "Random Advice by Sabuj Jana",
+  "short_name": "random-advice",
+  "background_color": "#282c34",
+  "theme_color": "#282c34",
+  "description": "Get real-life advice at the click of a button",
+  "icons": [
+    {
+      "src": "img/city1.jpg",
+      "sizes": "192x192",
+      "type": "image/jpg"
+    },
+    {
+      "src": "img/city1.jpg",
+      "sizes": "512x512",
+      "type": "image/jpg"
+    }
+  ],
+  "start_url": "/?source=pwa",
+  "display": "standalone"
+}
