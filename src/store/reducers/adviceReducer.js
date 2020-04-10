@@ -1,5 +1,5 @@
 const initState = {
-  advice: ["Hi there beautiful stranger !! Ready to listen to advices ?"]
+  advice: ["Hi there beautiful stranger !! Ready to listen to some advice ?"]
 };
 
 const adviceReducer = (state = initState, action) => {
