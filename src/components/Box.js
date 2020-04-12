@@ -1,15 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getAdvice } from "../store/actions/getAdvice";
+import { Spinner } from "./Spinner";
 
 class Box extends React.Component {
   handleClick = e => {
     // console.log("Click me senpai");
-    this.props.getAdvice("let us fetch advice from api");
+    this.props.getAdvice();
   };
 
   render() {
-    const { advice } = this.props;
+    const { adviceState } = this.props;
     return (
       <div className="row">
         <div className="col s0 m3"> </div>
@@ -19,7 +20,15 @@ class Box extends React.Component {
               <span className="card-title">
                 <i className="material-icons">fingerprint</i>
               </span>
-              <p style={{ fontFamily: "Cairo", fontSize: "20px" }}>{advice}</p>
+              <p style={{ fontFamily: "Cairo", fontSize: "20px" }}>
+                {adviceState.loading ? (
+                  <Spinner />
+                ) : adviceState.error.length !== 0 ? (
+                  <p> {adviceState.error} </p>
+                ) : (
+                  <p> {adviceState.advice} </p>
+                )}
+              </p>
             </div>
             <div className="card-action">
               <button
@@ -42,13 +51,13 @@ class Box extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    advice: state.adviceRoot.advice
+    adviceState: state.adviceRoot
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getAdvice: dummy => dispatch(getAdvice(dummy))
+    getAdvice: () => dispatch(getAdvice())
   };
 };
 
